@@ -43,6 +43,15 @@ background-size: 0.375em 0.375em, 0.375em 0.375em, 100% 100%;" <?}?>>
             <a href="#"></a>Блокноты <? echo $_SESSION['login'];?></a> 
         </h2>
         <center>
+<?if ($_SESSION['open']){?>            
+            <button class="instrumental" onclick="window.location.href = '?logout=unlog';"><i class="fas fa-sign-out-alt"></i></button> 
+<?}else{?>
+            <button class="instrumental" onclick="window.location.href = '?';"><i class="fas fa-sign-in-alt"></i></i></button>
+<?}?>
+            <button class="instrumental" onclick="window.location.href = '?note_link=Инструкция.txt';"><i class="fas fa-users-cog"></i></button> 
+            <button class="instrumental" onclick="window.location.href = '../crypnote.zip';"><i class="fas fa-download"></i></button>
+            <br>
+            <hr>
 <?
 if ($_SESSION['open']){?>
     <fieldset>
@@ -67,34 +76,42 @@ if ($_SESSION['open']){?>
         echo '          <div><a href="?note_link='.$str.'.txt" title="Открыть запись"><b>'.$str.'</b></a>' ; if ($str!="Инструкция"&&$str!="1_Первый блокнот"){echo '| <i id="'.$str.'" class="far fa-window-close"  title="Удалить запись" style="color:#fff;"></i></div>';}; echo "\n";
     }
 ?>
-            <div><a href="?note_link=Инструкция.txt" title="Открыть запись"><b>Инструкция_log</b></a>
+<!--            <div><a href="?note_link=Инструкция.txt" title="Открыть запись"><b>Инструкция_log</b></a>-->
         </fieldset>
+        <hr>
+        
+        
+<!--
         <form id="form1" action="#" method="get">
             <input type="hidden" name="logout" value="unlog">
             <button>Завершить</button>
-        </form>  
-        
+        </form>
+-->        
+     
 <?}else{?>
-        <fieldset id="fild">
-            <div>
+<!--           <fieldset id="fild">
+           <div>
                 <a href="?note_link=Инструкция.txt" title="Открыть запись"><b>Инструкция_unlog</b></a><br>
                 <a href="?" title="Открыть запись"><b>Вход</b></a><br>
             </div>
         </fieldset>
         <br><br>
+-->  
 <?}?>
-        <fieldset>
+      <fieldset>
         <span style="color:#fff;"><b>Криптографический блокнот </b><br>
         Доступен по лицензии <a href="http://www.wtfpl.net/about/"  target ="_blank" style="color:#fff;">WTFPL</a><br>
-        2017-<? echo date ( 'Y' ) ;?><br>Версия 1.0  &nbsp;&nbsp;<a href="../crypnote_v1_12-01-19.zip"><i class="fas fa-download"></i></a></span>
+        2017-<? echo date ( 'Y' ) ;?><br>Версия 1.0
         </fieldset>
+        <hr>
         <fieldset>
             <a href="https://fontawesome.com/"><i class="fab fa-fort-awesome"></i></a>&nbsp;&nbsp;&nbsp;
+            <a href="https://github.com/mcsweb/crypnote-"><i class="fab fa-github"></i></a>&nbsp;&nbsp;&nbsp;
             <a href=""><img src="img/logo-jquery.png" style="height:1em;"></a>&nbsp;&nbsp;&nbsp;
             <a href="http://jqueryte.com"><img src="img/jquerytelogo.png" style="height:1em;"></a>&nbsp;&nbsp;&nbsp;
-            
-            
+            <a href="https://rusitblog.blogspot.com/"><i class="fab fa-blogger-b"></i></a>&nbsp;&nbsp;&nbsp;
         </fieldset>
+        <hr>
         </center>
        
 
@@ -134,7 +151,7 @@ if ($_SESSION['open']){
     
 <?
 if ($_SESSION['open']){?>
-    <div id="" style="margin:0vh 0 0.5vh 3vw;padding:0px;width:85vw;height:5vh;font-size:2vh;"><b>Путь к файлу: </b><? echo $note_puth;?> ; <b>Вы запросили документ</b> : <?if($_GET['note_link']!=""){echo $_GET['note_link'];}else{echo "запрос отсутствует";}?></div>
+    <div id="" style="margin:0vh 0 0.5vh 3vw;padding:0px;width:85vw;height:5vh;font-size:2vh;color:grey;">| <b>Путь к файлу: </b><? echo $note_puth;?> | <b>Вы запросили документ</b> : <?if($_GET['note_link']!=""){echo $_GET['note_link'];}else{echo "запрос отсутствует";}?> |</div>
 <?}
 if ($_SESSION['open']){
     echo "  <script>var note_title='".$note_link."'</script>\n";
